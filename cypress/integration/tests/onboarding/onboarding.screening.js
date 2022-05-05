@@ -1,5 +1,5 @@
-const owner_logic = require('../logic/owner_logic');
-const owner_validation = require('../validation/owner_validation');
+const owner_logic = require('../../logic/owner_logic');
+const owner_validation = require('../../validation/owner_validation');
 
 describe("Invite to apply", () => {
     beforeEach(() => {

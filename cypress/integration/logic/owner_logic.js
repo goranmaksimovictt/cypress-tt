@@ -1,7 +1,11 @@
 const fetch = require('node-fetch');
 const utils = require('../../utils/cypress-utils');
 
+const nameSuffix = utils.randomText(5);
 
+if (!nameSuffix) {
+  nameSuffix = utils.randomText(5);
+}
 
 const getDefaultOwnerTestEmail = () => {
   const timestamp = +new Date();
@@ -156,12 +160,10 @@ function addNewTenant({ page, nameSuffix }) {
 
   page.waitForSelector('#add-new-tenant');
 
-  if (!nameSuffix) {
-    nameSuffix = utils.randomText(5);
-  }
-  utils.focusAndReplace(page, '#first_name', `Tenant ${nameSuffix}`);
 
-  utils.focusAndReplace(page, '#last_name', `Tenant Last ${nameSuffix}`);
+
+  utils.focusAndReplace(page, '#first_name', firstName);
+  utils.focusAndReplace(page, '#last_name', lastName);
 
   utils.focusAndReplace(page, '#telephone', '1234567890');
 
@@ -255,28 +257,28 @@ async function addTenantForScreening(page) {
   await utils.focusAndReplace(
     page,
     '[data-qa="external-application-renter-info-first-name"]',
-    `Tenant ${nameSuffix}`,
+    `Tenant`,
   );
-  await utils.focusAndReplace(
+   utils.focusAndReplace(
     page,
     '[data-qa="external-application-renter-info-last-name"]',
-    `Tenant Last ${nameSuffix}`,
+    `Tenant Last`,
   );
-  await utils.focusAndReplace(
+   utils.focusAndReplace(
     page,
     '[data-qa="external-application-renter-info-email"]',
     `test+manualtenant${nameSuffix}@turbotenant.com`,
   );
 
   // Property. 3rd option (1 based) is the new property we added in a previous step.
-  await utils.selectOption(
+   utils.selectOption(
     page,
     '[data-qa="external-application-rental-property-listing-select"]',
     3,
   );
 
   // Owner mailing address
-  await ownerMailingAddressCommons(page);
+   ownerMailingAddressCommons(page);
 
   // Who pays?
   await utils.waitForAndClickElement(
@@ -298,11 +300,11 @@ function addRenterToApply() {
   const nameSuffix = utils.randomText(5);
   utils.focusAndReplace(
     '[data-qa="onboarding-renter-info-first-name"]',
-    `Tenant ${nameSuffix}`,
+    `Tenant`,
   );
   utils.focusAndReplace(
     '[data-qa="onboarding-renter-info-last-name"]',
-    `Tenant Last ${nameSuffix}`,
+    `Tenant Last`,
   );
   utils.clickElement(
     '[data-qa="radio-invite-type-input-option-email"]'
