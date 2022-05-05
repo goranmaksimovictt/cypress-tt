@@ -1,0 +1,50 @@
+{
+  "name": "cypress-tt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cy:run": "cypress run",
+    "pre-commit": "lint-staged"
+  },
+  "devDependencies": {
+    "@cypress/react": "^5.12.4",
+    "@cypress/webpack-dev-server": "^1.8.4",
+    "cypress": "^9.5.4",
+    "eslint": "^7.17.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "html-webpack-plugin": "^4.5.2",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
+    "typescript": "^4.6.3",
+    "webpack": "^5.72.0",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn prettier --write",
+      "yarn eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run pre-commit"
+    }
+  },
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+  "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "dotenv": "^16.0.0",
+    "dotenv-extended": "^2.9.0",
+    "kebab-case": "^1.0.1",
+    "lodash": "^4.17.21",
+    "lodash.get": "^4.4.2",
+    "moment": "^2.29.3",
+    "node-fetch": "^2.6.7"
+  }
+}

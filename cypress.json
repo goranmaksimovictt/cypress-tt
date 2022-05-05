@@ -1,0 +1,22 @@
+{
+  "baseUrl": "https://kilburg-owner.turbotenant.com",
+  "baseApiUrl": "http://localhost:8080",
+  "viewportWidth": 1440,
+  "viewportHeight": 800,
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  },
+  "defaultCommandTimeout": 40000,
+  "env": {
+    "TEST_OWNER_URL": "https://kilburg-owner.turbotenant.com",
+    "TEST_RENTER_URL": "https://kilburg-renter.turbotenant.com",
+    "TEST_API": "https://kilburg-api.turbotenant.com"
+  },
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/test-output.xml",
+    "toConsole": true
+  },
+  "projectId": "nctmk8"
+}
