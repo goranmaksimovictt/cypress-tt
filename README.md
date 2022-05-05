@@ -5,15 +5,12 @@ POC (Proof of concepts) of cypress automation testing
 ## Run
 
 ```
-yarn cypress:open
-
-OR
-
-./node_modules/.bin/cypress open
-
-OR
-
-cypress open
+npx cypress run --spec "cypress/integration/tests/onboarding*" - Run onboarding tests
+--headed - Run in browser (default is headless)
+--record - Save results in one file
+ --spec - Choose which tests to run
+ --key $CYPRESS_RECORD_KEY - to run on specific test dashboard dashboard (save key in environment variable ->8148a8af-6710-4448-acdc-50ba6812d0e1)
+ --paralel - to run all tests in paralel
 ```
 
 ## Structure
