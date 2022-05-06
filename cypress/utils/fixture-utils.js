@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const defaults = require('../fixtures/defaults');
 const fetch = require('node-fetch');
+const fixturesData = require('../../cypress/fixtures/owner_login');
+const fixtureUtils = require('../../cypress/utils/fixture-utils');
+
 
 /**
  * Method will hit POST to create fixtures test route and create all the things we need in DB before the test starts
@@ -42,6 +45,16 @@ const createFixtures = async (data) => {
   }
 };
 
+async function getOwnerFixtures() {
+
+  const serverResponse = await fixtureUtils.createFixtures(
+      fixturesData.data(),
+  );
+  console.log('serveResponse', serverResponse);
+  return serverResponse.data;
+}
+
 module.exports = {
   createFixtures,
+  getOwnerFixtures
 };

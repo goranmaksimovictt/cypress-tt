@@ -1,20 +1,13 @@
 const fixtureUtils = require('../../utils/fixture-utils');
-const fixturesData = require('../../fixtures/owner_login');
 
+const ownerFixtures = fixtureUtils.getOwnerFixtures();
 
-async function getOwnerFixtures() {
-
-  const serverResponse = await fixtureUtils.createFixtures(
-      fixturesData.data(),
-  );
-  console.log('serveResponse', serverResponse);
-  return serverResponse.data;
-}
 
 describe("Login Page", () => {
   beforeEach(() => {
-    cy.visit('/auth/login');
-    cy.intercept('*');
+    let url = Cypress.env('TEST_OWNER_URL') + '/auth/login';
+    cy.visit(url);
+    // cy.intercept('*');
   });
 
   it("After click Forgot Password, Redirect to forgot-password page", () => {
@@ -46,7 +39,6 @@ describe("Login Page", () => {
     // }).as('register')
 
     // cy.wait(['@register'])
-    const ownerFixtures = await getOwnerFixtures();
     
 console.log(ownerFixtures['confirmed_owner']);
     let owner_email= ownerFixtures['confirmed_owner'].rawData['email'];
