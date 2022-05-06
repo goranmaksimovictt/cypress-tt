@@ -16,7 +16,7 @@ const createFixtures = async (data) => {
 
   try {
     const res = await fetch(
-      Cypress.env('TEST_API')+`https://kilburg-api.turbotenant.com/test/create_fixtures`,
+      Cypress.env('TEST_API')+`/test/create_fixtures`,
       {
         method: 'POST',
         headers: {
