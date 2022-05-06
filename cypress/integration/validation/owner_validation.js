@@ -154,7 +154,7 @@ function addPropertyScreening() {
     cy.get("._23UYNcOB_X94WYPQpT391j").then(($el) => {
         const text = $el.text();
 
-        expect(text).to.oneOf("Screen Your Tenants", "Online Application & Screening");
+        expect(text).to.eq("Screen Your Tenants");
     });
 
     cy.get("._39gY7HxZXC6ie5MJq8cVYI").then(($el) => {
