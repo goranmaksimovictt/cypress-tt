@@ -2,7 +2,6 @@
 const defaults = require('../fixtures/defaults');
 const fetch = require('node-fetch');
 const fixturesData = require('../../cypress/fixtures/owner_login');
-const fixtureUtils = require('../../cypress/utils/fixture-utils');
 
 
 /**
@@ -44,10 +43,9 @@ const createFixtures = async (data) => {
     return false;
   }
 };
+const getOwnerFixtures = async () => {
 
-async function getOwnerFixtures() {
-
-  const serverResponse = await fixtureUtils.createFixtures(
+  const serverResponse = await createFixtures(
       fixturesData.data(),
   );
   console.log('serveResponse', serverResponse);

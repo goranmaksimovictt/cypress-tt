@@ -4,3 +4,4 @@
 /.gitignore
 cypress/.DS_Store
 /results
+JenkinsFile

@@ -1,6 +1,6 @@
 const fixtureUtils = require('../../utils/fixture-utils');
-
-const ownerFixtures = fixtureUtils.getOwnerFixtures();
+const fixturesData = require('../../fixtures/owner_login');
+let ownerFixtures;
 
 
 describe("Login Page", () => {
@@ -39,8 +39,13 @@ describe("Login Page", () => {
     // }).as('register')
 
     // cy.wait(['@register'])
-    
+    const serverResponse = await fixtureUtils.createFixtures(
+      fixturesData.data(),
+    );
+    ownerFixtures = serverResponse.data;
+
 console.log(ownerFixtures['confirmed_owner']);
+
     let owner_email= ownerFixtures['confirmed_owner'].rawData['email'];
     let owner_password = ownerFixtures['confirmed_owner'].rawData['password'];
     cy.get('input[id=user]').type(owner_email)
