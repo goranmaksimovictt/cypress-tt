@@ -5,3 +5,6 @@
 cypress/.DS_Store
 /results
 JenkinsFile
+cypress/screenshots/tests/onboarding.application.js/Invite to apply -- Lead validation (failed).png
+*.png
+*.mp4
