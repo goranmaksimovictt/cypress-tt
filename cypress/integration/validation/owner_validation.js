@@ -480,7 +480,7 @@ function mailingAddress() {
     cy.get('._3rO45IAvyhqYJ01ihG6pHQ').then(($el) => {
         const text = $el.text();
         // console.log((text))
-        expect(text).to.eq("With access to their credit, criminal, and eviction history, you'll know how reliable they'll be as a tenant.");
+        expect(text).to.contains('With access to their credit, criminal, and eviction history');
     });
 
     //check if image is displayed
