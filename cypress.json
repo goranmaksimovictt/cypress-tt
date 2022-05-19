@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://kilburg-owner.turbotenant.com",
+  "baseUrl": "https://stable-owner.turbotenant.com",
   "baseApiUrl": "http://localhost:8080",
   "viewportWidth": 1440,
   "viewportHeight": 800,
@@ -9,14 +9,16 @@
   },
   "defaultCommandTimeout": 40000,
   "env": {
-    "TEST_OWNER_URL": "https://kilburg-owner.turbotenant.com",
-    "TEST_RENTER_URL": "https://kilburg-renter.turbotenant.com",
-    "TEST_API": "https://kilburg-api.turbotenant.com"
+    "TEST_OWNER_URL": "https://stable-owner.turbotenant.com",
+    "TEST_RENTER_URL": "https://stable-renter.turbotenant.com",
+    "TEST_API": "https://stable-api.turbotenant.com"
   },
   "reporter": "junit",
   "reporterOptions": {
     "mochaFile": "results/test-output.xml",
     "toConsole": true
   },
-  "projectId": "wuikeh"
+  "projectId": "wuikeh",
+  "experimentalStudio" : true
+
 }

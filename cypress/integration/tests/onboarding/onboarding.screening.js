@@ -3,6 +3,7 @@ const owner_validation = require('../../validation/owner_validation');
 
 describe("Invite to apply", () => {
     beforeEach(() => {
+        Cypress.Cookies.preserveOnce('session_id', 'remember_token')
         cy.restoreLocalStorage();
 
         //   cy.intercept('*');

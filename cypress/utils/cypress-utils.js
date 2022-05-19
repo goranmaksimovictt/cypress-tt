@@ -16,6 +16,11 @@ const generateTestEmail = () => `test+${Date.now()}${Math.floor(Math.random() * 
 function clickElement(selector){
 cy.get(selector).click();
 }
+
+function checkElement(selector){
+  cy.get(selector).check();
+  }
+
 function randomText(length) {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -33,5 +38,6 @@ module.exports = {
   focusAndClean,
   selectOption,
   clickElement,
-  randomText
+  randomText, 
+  checkElement
 };

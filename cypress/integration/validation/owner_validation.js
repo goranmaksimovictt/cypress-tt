@@ -160,7 +160,7 @@ function addPropertyScreening() {
     cy.get("._39gY7HxZXC6ie5MJq8cVYI").then(($el) => {
         const text = $el.text();
 
-        expect(text).to.eq("With access to their credit, criminal, and eviction history, you’ll know how reliable they’ll be as a tenant.");
+        expect(text).to.eq("With access to their credit, criminal, and eviction history, you\’ll know how reliable they\’ll be as a tenant.");
     });
 
     //check if image is displayed
@@ -595,7 +595,71 @@ function checkProperty(){
 }
 
 
+function setUpRentPayments(){
 
+
+/* ==== Generated with Cypress Studio ==== */
+cy.get('h1').should('have.text', 'Set Up Rent Payments');
+cy.get('._1XP2sHImld6CXsJUn7Qz1H').should('have.text', 'Why Landlords Love Our Rent Payments');
+cy.get(':nth-child(2) > .CsCCc45uaXt3QYUnlof4m > .yAUvlgj-jNyGt0EZcDjWu').should('have.text', 'The best things are that it’s free and it sends automatic rent reminders. It is simple, and tenants pay more timely!');
+cy.get(':nth-child(2) > .CsCCc45uaXt3QYUnlof4m > ._3N9uJdkgMQO0JfKoyeuvF9 > ._1e5WXI64cCWV52QDTuwaCK').should('have.text', 'Jordan');
+cy.get(':nth-child(2) > .CsCCc45uaXt3QYUnlof4m > ._3N9uJdkgMQO0JfKoyeuvF9 > ._1wHute1i-ea8vMxbkb8o4M').should('have.text', ' - 8 Unit Landlord');
+cy.get(':nth-child(3) > .CsCCc45uaXt3QYUnlof4m > .yAUvlgj-jNyGt0EZcDjWu').should('have.text', 'I like the automatic receipts, not having to deposit a check, and being able to track everything in one place.');
+cy.get(':nth-child(3) > .CsCCc45uaXt3QYUnlof4m > ._3N9uJdkgMQO0JfKoyeuvF9 > ._1e5WXI64cCWV52QDTuwaCK').should('have.text', 'Ryan');
+cy.get(':nth-child(3) > .CsCCc45uaXt3QYUnlof4m > ._3N9uJdkgMQO0JfKoyeuvF9 > ._1wHute1i-ea8vMxbkb8o4M').should('have.text', ' - 3 Unit Landlord');
+cy.get('h2').should('have.text', 'Overview:');
+cy.get('.MSDmuMDfG4QOBFBdlIYVY > :nth-child(1)').should('have.text', 'Add your property information and create charges');
+cy.get('.MSDmuMDfG4QOBFBdlIYVY > :nth-child(2)').should('have.text', 'Connect your bank account so you can get paid');
+cy.get('._2X_Irl-V64mHgAub_AnCfI').should('have.text', 'Get Started. It\'s Free!');
+cy.get('.MSDmuMDfG4QOBFBdlIYVY > :nth-child(1)').click();
+cy.get('._2X_Irl-V64mHgAub_AnCfI').click();
+cy.get('._38bX_e-7sXHWw3Q5RjjuUe').should('have.text', 'Add Lease Details to Collect Rent');
+cy.get('._2LjP6b5Wevn4V784QwX6Q7').should('have.text', 'You can edit this info later.');
+cy.get(':nth-child(1) > .eP5NCUe600TE20M0Wl7Bu > svg > path').should('be.visible');
+cy.get(':nth-child(1) > ._1se3CvyGZuFzrOMuuCd7-a').should('have.text', 'Rental Property');
+cy.get('#downshift-1-label').should('have.text', 'Street Address');
+cy.get('#downshift-0-input').should('have.attr', 'name', 'address');
+cy.get('._3SVI5FbIIMpeXXGddgfpc3 > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'Unit(Optional)');
+cy.get('#unit').should('have.attr', 'data-qa', 'unit');
+cy.get('#downshift-0-input').should('have.attr', 'data-qa', 'address');
+cy.get('.-EpGDV-ApbbTzaTvA5SW- > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'City');
+cy.get('form > :nth-child(3)').click();
+cy.get('#city').should('have.attr', 'data-qa', 'city');
+cy.get('.KOme52q2ISMjWAC9zWxJQ > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'State');
+cy.get('#state').should('have.attr', 'data-qa', 'state');
+cy.get('._14Hbfv0RyEb2VLWGhYbuhh > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'Zip Code');
+cy.get('#zip').should('have.attr', 'data-qa', 'zip');
+cy.get(':nth-child(3) > ._1se3CvyGZuFzrOMuuCd7-a').should('have.text', 'Lease Details');
+cy.get(':nth-child(3) > .eP5NCUe600TE20M0Wl7Bu > svg').should('be.visible');
+cy.get('._2S23r0n6r_kjLBdis18hHX > ._1I1T2e-QQxIxeWPL-IxRnZ > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'Lease Nickname');
+cy.get('#title_errormsg').should('have.text', 'This value is required');
+cy.get('._3kE0AybNOVBxBn2a4oRCTy').should('have.text', 'Most landlords use a combination of the property address and tenant’s names (“Main St. #12 - Rodriguez”).');
+cy.get(':nth-child(1) > :nth-child(1) > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'Start Date(Optional)');
+cy.get('._2Zr1_t6UPVbVKuwSg45L2l > :nth-child(2) > :nth-child(1) > .a_AEsud0JHXw20iBJpSrV').should('have.text', 'End Date(Optional)');
+cy.get(':nth-child(1) > :nth-child(1) > .a_AEsud0JHXw20iBJpSrV').should('have.attr', 'for', 'start_date');
+cy.get('._2Zr1_t6UPVbVKuwSg45L2l > :nth-child(2) > :nth-child(1) > .a_AEsud0JHXw20iBJpSrV').should('have.attr', 'for', 'end_date');
+cy.get('#start_date').should('have.attr', 'data-qa', 'lease-details-basic-start_date');
+cy.get('#end_date').should('have.attr', 'data-qa', 'lease-details-basic-end_date');
+cy.get('#month_to_month').should('have.attr', 'data-qa', 'lease-details-month-to-month-checkbox');
+cy.get('._2r4heQ1rIdfHlnK3Ej8CqR').should('have.text', 'Month-to-Month');
+cy.get('#partial_payments_yes').should('have.attr', 'data-qa', 'lease-onboarding-partial-payments-radio-yes');
+cy.get('.x7GJThCB_Xmz5GViKAO13').should('have.text', 'This allows roommates to easily split rent.');
+cy.get('#partial_payments_yes').should('have.attr', 'data-qa', 'lease-onboarding-partial-payments-radio-yes');
+cy.get(':nth-child(1) > .rlUWFppYE-DfNhOEidM_o').should('have.text', 'Yes');
+cy.get('#partial_payments_no').should('have.attr', 'data-qa', 'radio-partial-payments-input-option-false');
+cy.get(':nth-child(2) > .rlUWFppYE-DfNhOEidM_o').should('have.text', 'No');
+cy.get('._1-jEIC4wTKmnc-h94geih_').click();
+cy.get(':nth-child(10) > .eP5NCUe600TE20M0Wl7Bu > svg').should('be.visible');
+cy.get(':nth-child(10) > ._1se3CvyGZuFzrOMuuCd7-a').should('have.text', 'Tenants');
+cy.get('h6').should('have.text', 'Helpful info:');
+cy.get('.kIGf5oujcfwtJyN42y1xX > :nth-child(1)').should('have.text', 'Once you\'re set up your tenants are invited to their Tenant Portal where they can make payments, request maintenance, and more!');
+cy.get('.kIGf5oujcfwtJyN42y1xX > :nth-child(2)').should('have.text', 'Don\'t have a tenant yet? Feel free to add one later. Charges won\'t be sent until you add a tenant to a lease.');
+cy.get('._2AKvPC6KQEqNg8qzfbpb_0 > ._2X_Irl-V64mHgAub_AnCfI').should('have.attr', 'data-qa', 'lease-details-add-tenant-btn');
+cy.get('#add_lease_details_submit').should('have.attr', 'data-qa', 'lease-details-basic-button-continue');
+cy.get('#downshift-0-input').click();
+/* ==== End Cypress Studio ==== */
+    
+}
 
 
 
@@ -608,5 +672,6 @@ module.exports = {
     mailingAddress,
     invitationSent,
     checkCreatedLead,
-    checkProperty
+    checkProperty,
+    setUpRentPayments
 };

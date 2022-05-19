@@ -48,11 +48,11 @@ function signUpAndGetToWelcomeScreen(
 
   utils.clickElement(
     '#signup_submit');
-  cy.url().should('include', Cypress.env('TEST_OWNER_URL') + '/onboarding/welcome');
+  // cy.url().should('include', Cypress.env('TEST_OWNER_URL') + '/onboarding/welcome');
 
 
-  utils.clickElement(
-    '#lets_get_started');
+  // utils.clickElement(
+  //   '#lets_get_started');
 
   return { email, password };
 }
@@ -123,10 +123,10 @@ function propertyStep() {
 }
 
 // Basic property and lease details form.
-function propertyAndLeaseBasicStep(page, stateOption) {
+function propertyAndLeaseBasicStep() {
   utils.focusAndReplace('[data-qa="address"]', '203 4th St');
   utils.focusAndReplace('[data-qa="city"]', 'Black Rock');
-  utils.selectOption('[data-qa="state"]', stateOption);
+  utils.selectOption('[data-qa="state"]', 'AR');
   utils.focusAndReplace('[data-qa="zip"]', '44444');
 
   // lease-details-basic-title
@@ -140,42 +140,34 @@ function propertyAndLeaseBasicStep(page, stateOption) {
     '01/21/2029',
   );
 
-  utils.waitForAndClickElement(
+  utils.clickElement(
     '[data-qa="lease-details-month-to-month-checkbox"]'
   );
 
-  utils.waitForAndClickElement(
+  utils.clickElement(
     '[data-qa="lease-details-basic-button-continue"]'
   );
-  utils.waitUntilLoadingDisappears();
 }
 
-function addNewTenant({ page, nameSuffix }) {
-  page.waitForSelector('#tenants_index');
+function addNewTenant() {
 
-  utils.waitForAndClickElement('#tenants_index', page);
-  utils.waitUntilLoadingDisappears(page);
+  utils.clickElement('#tenants_index');
 
-  utils.waitForAndClickElement('#add_new_tenant', page);
-
-  page.waitForSelector('#add-new-tenant');
+  utils.clickElement('#add-new-tenant');
 
 
 
-  utils.focusAndReplace(page, '#first_name', firstName);
-  utils.focusAndReplace(page, '#last_name', lastName);
+  utils.focusAndReplace('#first_name', firstName);
+  utils.focusAndReplace('#last_name', lastName);
 
-  utils.focusAndReplace(page, '#telephone', '1234567890');
+  utils.focusAndReplace('#telephone', '1234567890');
 
   utils.focusAndReplace(
     '#email',
-    `test+manualtenant${nameSuffix}@turbotenant.com`,
+    `test+${nameSuffix}@turbotenant.com`,
   );
 
-  utils.waitForAndClickElement('#add_to_lease',);
-
-  utils.waitForSelector('#add-tenant-to-lease-title');
-  utils.waitUntilLoadingDisappears();
+  utils.clickElement('#add_to_lease',);
 }
 
 function addTenantToALease({ leaseId }) {
@@ -360,6 +352,11 @@ function goToLeadsPage(){
   utils.clickElement('[data-qa="sidebar-nav-item-leads-index"]');
 
 }
+function startRentPayments() {
+ utils.clickElement('._3K1LnCATamWYF-lurj88xc');
+utils.clickElement('#onboarding-continue-button');
+
+}
 
 
 module.exports = {
@@ -383,5 +380,6 @@ module.exports = {
   chooseApplicationFlow,
   chooseScreeningFlow,
   goToPropertiesPage,
-  goToLeadsPage
+  goToLeadsPage,
+  startRentPayments
 };
