@@ -2,8 +2,28 @@
 
 const fetch = require("node-fetch")
 const utils = require("../../utils/cypress-utils")
+const fixtureUtils = require("../../utils/fixture-utils")
+const fixturesData = require("../../fixtures/owner_login")
 
-const nameSuffix = utils.randomText(5)
+let ownerFixtures
+let owner_email
+let owner_password
+
+// async function prepareOwnerFixtures(){
+// const serverResponse = await fixtureUtils.createFixtures(
+//   fixturesData.data(),
+// );
+// ownerFixtures = await serverResponse.data;
+// owner_email=  ownerFixtures['confirmed_owner'].rawData['email'];
+// console.log(ownerFixtures);
+// console.log('email: '+owner_email);
+// owner_password = ownerFixtures['confirmed_owner'].rawData['password'];
+// console.log('password: '+owner_password);
+
+// return ownerFixtures;
+// }
+
+let nameSuffix = utils.randomText(5)
 
 if (!nameSuffix) {
   nameSuffix = utils.randomText(5)
@@ -18,6 +38,16 @@ const getDefaultOwnerTestPassword = () => {
   return "password"
 }
 
+async function loginOwner() {
+  ownerFixtures = await prepareOwnerFixtures()
+  owner_email = ownerFixtures["confirmed_owner"].rawData["email"]
+  owner_password = ownerFixtures["confirmed_owner"].rawData["password"]
+
+  cy.get("input[id=user]").type(owner_email)
+  cy.get("input[id=password]").type(owner_password)
+  cy.get("[type=submit]").click()
+}
+
 function signUpAndGetToWelcomeScreen({
   url = Cypress.env("TEST_OWNER_URL") + "/auth/signup",
   firstName = "FirstName",
@@ -29,8 +59,10 @@ function signUpAndGetToWelcomeScreen({
   // utils.loadDotEnv();
   // logout the user if it's logged in
   cy.visit(url)
+
   cy.clearLocalStorage()
 
+  // const ownerFixtures =  prepareOwnerFixtures();
   const email = getDefaultOwnerTestEmail()
 
   // Uncomment for debugging:
@@ -53,7 +85,7 @@ function signUpAndGetToWelcomeScreen({
   // utils.clickElement(
   //   '#lets_get_started');
 
-  return { email, password }
+  return { owner_email, owner_password }
 }
 
 function welcomeStep(page) {
@@ -95,8 +127,8 @@ function propertyStep() {
   utils.focusAndReplace('[data-qa="zip"]', "80525")
   utils.selectOption('[data-qa="onboarding-property-property-type"]', 1)
   utils.focusAndReplace('[data-qa="onboarding-property-bedrooms"]', "3")
-  utils.focusAndReplace('[data-qa="onboarding-property-bathrooms"]', "3")
-  utils.focusAndReplace('[data-qa="onboarding-property-rent-amount"]', "1200")
+  utils.focusAndReplace('[data-qa="details-property-details-bathrooms"]', "3")
+  utils.focusAndReplace('[data-qa="rent-amount-input"]', "1200")
   utils.focusAndReplace(
     '[data-qa="onboarding-property-security-deposit"]',
     "1200"
@@ -309,12 +341,16 @@ function goToPropertiesPage() {
 function goToLeadsPage() {
   utils.clickElement('[data-qa="sidebar-nav-item-leads-index"]')
 }
-function startRentPayments() {
-  utils.clickElement("._3K1LnCATamWYF-lurj88xc")
+function chooseRentPayments() {
+  utils.clickElement("#button-id-RENT_PAYMENTS")
   utils.clickElement("#onboarding-continue-button")
+}
+function getStartedRentPayments() {
+  utils.clickElement('[data-qa="lets-get-started"]')
 }
 
 module.exports = {
+  loginOwner,
   addNewTenant,
   addTenantToALease,
   signUpAndGetToWelcomeScreen,
@@ -336,5 +372,6 @@ module.exports = {
   chooseScreeningFlow,
   goToPropertiesPage,
   goToLeadsPage,
-  startRentPayments
+  chooseRentPayments,
+  getStartedRentPayments
 }

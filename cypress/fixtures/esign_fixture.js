@@ -1,11 +1,37 @@
 const data = () => {
   return [
     {
+      model: "payment_methods",
+      refName: "payment_method1"
+    },
+    {
       model: "owners",
       refName: "owner1",
       data: {
-        first_name: "Nenad",
-        last_name: "Test"
+        first_name: "Goran",
+        last_name: "Test",
+        customer_id: {
+          ref_type: "ref_field",
+          ref_object: "payment_method1",
+          ref_field: "customer_id"
+        }
+      }
+    },
+    {
+      model: "user_payment_methods",
+      refName: "user_payment_method1",
+      data: {
+        payment_method_id: {
+          ref_type: "ref_field",
+          ref_object: "payment_method1",
+          ref_field: "id"
+        },
+        owner_id: {
+          ref_type: "ref_field",
+          ref_object: "owner1",
+          ref_field: "id"
+        },
+        used_for_rent_payments: false
       }
     },
     {
@@ -59,33 +85,6 @@ const data = () => {
         lease_id: {
           ref_type: "ref_field",
           ref_object: "lease1",
-          ref_field: "id"
-        }
-      }
-    },
-    {
-      model: "stripe_identities",
-      refName: "stripeidentity1",
-      data: {
-        email: {
-          ref_type: "ref_field",
-          ref_object: "owner1",
-          ref_field: "email"
-        },
-        owner_id: {
-          ref_type: "ref_field",
-          ref_object: "owner1",
-          ref_field: "id"
-        }
-      }
-    },
-    {
-      model: "stripe_external_accounts",
-      refName: "stripeexternalaccount1",
-      data: {
-        stripe_identity_id: {
-          ref_type: "ref_field",
-          ref_object: "stripeidentity1",
           ref_field: "id"
         }
       }

@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
+
 const owner_logic = require("../../logic/owner_logic")
 const owner_validation = require("../../validation/owner_validation")
+let ownerFixtures
 
 describe("Invite to apply", () => {
   beforeEach(() => {
