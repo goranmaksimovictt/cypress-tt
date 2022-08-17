@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
-  baseApiUrl: 'http://localhost:8080',
+  // baseApiUrl: 'http://localhost:8080',
   viewportWidth: 1440,
   viewportHeight: 800,
   defaultCommandTimeout: 40000,
@@ -17,7 +17,7 @@ export default defineConfig({
     toConsole: true,
   },
   projectId: 'wuikeh',
-  experimentalStudio: true,
+  // experimentalStudio: true,
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
@@ -27,8 +27,8 @@ export default defineConfig({
     baseUrl: 'https://stable-owner.turbotenant.com',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
-  component: {
-    setupNodeEvents(on, config) {},
-    specPattern: 'src/**/*.test.{js,ts,jsx,tsx}',
-  },
+  // component: {
+  //   setupNodeEvents(on, config) {},
+  //   specPattern: 'src/**/*.test.{js,ts,jsx,tsx}',
+  // },
 })
