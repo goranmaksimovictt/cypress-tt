@@ -18,7 +18,7 @@ const LeaseViewTestPage = require("../leases/LeaseViewTestPage")
 // const ESignRenterWelcomeTestPage = require('./ESignRenterWelcomeTestPage');
 // const cypress = require('cypress');
 
-const promisify = require("cypress-promise")
+//  const promisify = require("cypress-promise")
 
 // const getOwnerFixtures = async () => {
 //  // Grab fixtures data for this test and then merge with default values.
@@ -35,8 +35,12 @@ describe("E-sign", () => {
   // })
   let dataFromServer
 
-  before(() => {
-    dataFromServer = fixtureUtils.getOwnerFixtures(fixturesData)
+  before(async () => {
+    cy.intercept("*", req => {
+      req.headers["Accept-Encoding"] = "gzip, deflate"
+    })
+
+    dataFromServer = await fixtureUtils.getOwnerFixtures(fixturesData.data())
   })
 
   // write JSON string to a file
@@ -56,11 +60,17 @@ describe("E-sign", () => {
     // Cypress.Cookies.preserveOnce('connect.sid')
     //     cy.restoreLocalStorage();
 
-    let owner1Obj = dataFromServer.find(obj => obj.refName === "owner1")
+    // let dataFromServerJson = JSON.parse(dataFromServer)
+    console.log("data from server")
+    console.log(dataFromServer)
+
+    let owner1Obj = dataFromServer.owner1
     cypressUtils.loginOwner({
-      user: owner1Obj.data["email"],
-      password: owner1Obj.data["password"]
+      email: owner1Obj.rawData["email"],
+      password: owner1Obj.rawData["password"]
     })
+
+    //  let owner1 = dataFrom[owner1]
 
     //  cy.visit('/');
     //  cy.intercept('*');
@@ -85,7 +95,7 @@ describe("E-sign", () => {
     leasesIndexPage.goToLeasesIndex()
 
     const titleText = leasesIndexPage.checkTitle()
-    // assert.equal(titleText, 'Leases');
+    assert.equal(titleText, "Leases")
 
     const leasesCount = leasesIndexPage.getLeasesListCount()
     assert.equal(leasesCount, 1)
