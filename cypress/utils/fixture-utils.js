@@ -1,6 +1,5 @@
 const defaults = require("../fixtures/defaults")
 const fetch = require("node-fetch")
-const fixturesData = require("../../cypress/fixtures/owner_login")
 
 /**
  * Method will hit POST to create fixtures test route and create all the things we need in DB before the test starts
@@ -13,7 +12,8 @@ const createFixtures = async data => {
     object.data = defaults.merge(object.model, object.data)
     return object
   })
-
+  console.log("prepared data")
+  console.log(prepared_data)
   try {
     const res = await fetch(Cypress.env("TEST_API") + `/test/create_fixtures`, {
       method: "POST",
@@ -38,9 +38,8 @@ const createFixtures = async data => {
     return false
   }
 }
-const getOwnerFixtures = async () => {
-  const serverResponse = await createFixtures(fixturesData.data())
-  console.log("serveResponse", serverResponse)
+const getOwnerFixtures = async data => {
+  const serverResponse = await createFixtures(data)
   return serverResponse.data
 }
 
