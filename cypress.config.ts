@@ -6,9 +6,9 @@ export default defineConfig({
   viewportHeight: 800,
   defaultCommandTimeout: 40000,
   env: {
-    TEST_OWNER_URL: 'https://stable-owner.turbotenant.com',
-    TEST_RENTER_URL: 'https://stable-renter.turbotenant.com',
-    TEST_API: 'https://stable-api.turbotenant.com',
+    TEST_OWNER_URL: 'https://stefan-owner.turbotenant.com',
+    TEST_RENTER_URL: 'https://stefan-renter.turbotenant.com',
+    TEST_API: 'https://stefan-api.turbotenant.com',
     TEST_TIMEOUT: 400000,
   },
   reporter: 'junit',

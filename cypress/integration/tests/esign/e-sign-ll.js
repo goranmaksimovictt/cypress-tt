@@ -64,11 +64,16 @@ describe("E-sign", () => {
     console.log("data from server")
     console.log(dataFromServer)
 
-    let owner1Obj = dataFromServer.owner1
     cypressUtils.loginOwner({
-      email: owner1Obj.rawData["email"],
-      password: owner1Obj.rawData["password"]
+      user: dataFromServer["owner1"].rawData["email"],
+      password: dataFromServer["owner1"].rawData["password"]
     })
+
+    // let owner1Obj = dataFromServer.owner1
+    // cypressUtils.loginOwner({
+    //   email: owner1Obj.rawData["email"],
+    //   password: owner1Obj.rawData["password"]
+    // })
 
     //  let owner1 = dataFrom[owner1]
 
@@ -134,10 +139,6 @@ describe("E-sign", () => {
 //     test: async function() {
 //       console.log(`${testName} STEP: ${this.title}.`);
 
-//        loginOwner({
-//         user: dataFromServer['owner1'].rawData['email'],
-//         password: dataFromServer['owner1'].rawData['password'],
-//       });
 //     },
 //   },
 

@@ -1,7 +1,7 @@
 /* eslint-disable cypress/no-async-tests */
 
-const fixtureUtils = require("../../utils/fixture-utils")
-const cypressUtils = require("../../utils/cypress-utils")
+const fixtureUtils = require("../../../utils/fixture-utils")
+const cypressUtils = require("../../../utils/cypress-utils")
 
 const fixturesData = require("../../fixtures/owner_login")
 let ownerFixtures
@@ -13,11 +13,11 @@ describe("Login Page", () => {
     // cy.intercept('*');
   })
 
-  it("After click Forgot Password, Redirect to forgot-password page", () => {
+  it("Wrong password", () => {
     // cypressUtils.findSelectorAndClickOnIt("Forgot Password");
     // cy.url().should("include", "resetpassword/reset");
 
-    cy.get("#user").click()
+    cypressUtils.cy.get("#user").click()
     cy.get("._3l9GltXSWKQEfCr0fwIQEY > ._2X_Irl-V64mHgAub_AnCfI").click()
     cy.get(
       ":nth-child(1) > ._2v0lS5f3Q3kz_BiWgc31D6 > ._3K1LnCATamWYF-lurj88xc"
